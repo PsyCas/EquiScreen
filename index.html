@@ -1,0 +1,32 @@
+<!doctype html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.css">
+  <!-- Always use `2.x` versions in production rather than `2` to mitigate any side effects on your website,
+  Find the latest version on InstantSearch.js website: https://community.algolia.com/instantsearch.js/v2/guides/usage.html -->
+</head>
+<body>
+  <header>
+    <div>
+       <input id="search-input" placeholder="Search for companies">
+       <!-- We use a specific placeholder in the input to guides users in their search. -->
+    </div>
+  </header>
+  <main>
+      <div id="hits"></div>
+      <div id="pagination"></div>
+  </main>
+
+  <script type="text/html" id="hit-template">
+    <div class="hit">
+      <h3 class="hit-symbol">{{{_highlightResult.symbol.value}}}</h3>
+      <p class="hit-company">{{{_highlightResult.company.value}}}</p>
+      <p class="hit-close">Closing price: ${{price_close}}</p>
+      <p class="hit-vol">Volume: {{price_volume}}</p>
+      <p class="hit-pct2W">Percent change (2-week): {{pct_change_2W}}%</p>
+    </div>
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3/dist/instantsearch.min.js"></script>
+  <script src="app.js"></script>
+</body>
